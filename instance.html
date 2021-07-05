@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instance 란?</title>
+</head>
+<body>
+    <div id="app">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        // 아래와 같이 변수로 주는것 보다, 객체의 리터럴로 주는게 가독성에 좋음.
+        // var options = {}; var vm = new Vue(aptions);        
+
+        var vm = new Vue({
+            el: '#app' ,
+            data : {
+                message : 'hi'
+            },
+            method : {
+
+            }
+            // el 속성을 주어야 실제 Vue instance의 API를 사용할 수 있음.(ex. data .. )
+        });
+    </script>
+
+    
+
+    <!-- 
+
+    [왜 instance를 생성해서 사용해야할까? - 생성자 람수를 살펴보자 ] 
+
+    <script>
+        function Persin( name, job) {
+            this.name = name;
+            this.job = job;
+        }
+
+        var p = new Person('josh','developer');
+
+        function Vue() {
+            this.logText = function() {
+                console.log('hello');
+            }
+        }
+
+        var vm = new Vue();
+        vm.logText();
+    </script>
+
+    * 생성자함수란?
+    함수명이 대문자로 시작하는경우 생성자 함수임을 의미한다.
+    생성된 instance에 속성 추가시, 다른 instance에 영향을 미치지는 않습니다. 
+    같은 형식을 가지는 모든 instance에 새 속성을 추가하고 싶으면 생성자 함수의 속성을 추가해야 합니다.
+
+    결론) 생성자 람수를 이용하면, 매번 함수를 정의하는것이아니라 재사용할 수있는 구조로 바뀜.
+
+    [Vue instance에서 사용할 수 있는 속성과 API]
+    
+    new Vue({
+        el : , instance가 그려지는 화면의 시작점( 특정 HTML 태그 )
+        template : , 화면에 표시할 요소 (HTML,CSS 등)
+        data : , Vue의 반응성(Reactivity)가 반영된 데이터 속성
+        methods : , 화면의 동작과 이벤트 로직을 제어하는 메소드
+        created : , Vue의 라이프 사이클과 관련된 속성
+        watch :  data에서 정의한 속성이 변화했을 때 추가동작을 수행할 수 있게 정의하는 속성
+    })
+
+    -->
+
+
+</body>
+</html>

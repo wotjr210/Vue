@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        var div = document.querySelector('#app');
+        var viewModel = {};
+
+        /* 객체의 특정한 속성을 재정의함
+        Object.defineProperty(대상 객체, 객체의 속성, {
+            문밥
+        }); 
+        */
+
+        // 즉시실행함수 , IFE 내부에서 정의된 변수는 외부 범위에서 접근이 불가능하다
+        (function(){
+
+            function init() {
+    
+            // 데이터의 변화를 라이브러리에서 감지해서 알아서 화면을 자동으로 그려주는것 - 리액티비티 이부분이 데이터 바인딩 부분이다!!
+            Object.defineProperty(viewModel, 'str', {
+                // 속성에 접근했을 때의 동적을 정의
+                get : function() {
+                        console.log('접근');
+                } ,
+                // 속성에 값을 할당했을 때의 동작을 정의
+                set : function(newValue) {
+                        console.log('할당',newValue);
+                        render(newValue);
+                }
+            });
+    
+            }
+    
+    
+            function render(value) {
+                div.innerHTML = value
+            }
+    
+            init();
+        })();
+
+    </script>
+</body>
+</html>
