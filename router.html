@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <div>
+            <!-- 
+                화면에 Atag로 변환되어서 보임 
+                router에서 페이지 이동을 위한 link tag라고 보면됨
+            -->
+            <router-link to="/login">Login</router-link>
+            <router-link to="/main">Main</router-link>
+        </div>
+
+        <!-- 
+            페이지url에따라서 뿌려지는 영역을  rotuer-view로 정의.
+            vue인스턴스에 router를 연결해야지만 사용가능.
+        -->
+        <router-view></router-view>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>   
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <script>
+
+        var LoginComponent = {
+            template : '<div>login</div>'
+        };
+
+        var MainComponent = {
+            template : '<div>main</div>'
+        };
+
+        var router = new VueRouter({
+            // url의 해쉬 값 제거 속성
+            // router의 기본 url형식은 해시(#)값을 사용.
+            mode : 'history',
+            // 라우팅할 url과 컴포넌트 값 지정
+            // 페이지의 라우팅 정보 (어떤 url로 접근했을때, 어떤 페이지로 이동하는지의 대한 정보) 배열형태 존재.
+            // 페이지의 갯수만큼 배열내에 객체가 존재.
+            routes : [
+                // 로그인 페이지 정보
+                {   
+                    // 페이지의 url
+                    path : '/login',
+                    // 해당 url에서 표시된 컴포넌트
+                    // 페이지마다 뿌려질 컴포넌트는 반드시 하나이기때문에 compoents(x) component
+                    component : LoginComponent
+
+                },
+                // 메인 페이지 정보
+                {  path : '/main', component : MainComponent }
+            ]
+
+
+        });
+
+        new Vue({
+            el : '#app',
+            router : router
+        });
+
+        /* 
+            Vue devtools에서 data속성아래에 생기면 정삭적으로 router가 주입된 상태.
+            $route
+            path:"/"
+            query:Object (empty)
+            params:Object (empty)
+            fullPath:"/"
+            meta:Object (empty)
+        */
+    </script>
+
+</body>
+</html>
