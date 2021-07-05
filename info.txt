@@ -13,3 +13,27 @@ N방향 통신의 문제점, 어떤 구간에서 문제가 발생했는지 확�
 
 [뷰 라이터]
 뷰 라이브러리를 이용하여 싱클 페이지 애플리케이션을 구현하거나 페이지간의 이동을 구현하는 라이브러리.
+
+
+[비동기]
+자바스크립트 비동기 처리와 콜백 함수
+https://joshua1988.github.io/web-development/javascript/javascript-asynchronous-operation/
+자바스크립트 Promise 쉽게 이해하기
+https://joshua1988.github.io/web-development/javascript/promise-for-beginners/
+자바스크립트 async와 await
+https://joshua1988.github.io/web-development/javascript/js-async-await/
+
+
+[AXIOS(액시오스)]
+뷰에서 권고하는 HTTP통신 라이브러리 , Promise기반의 HTTP통신 라이브러리.
+https://github.com/axios/axios
+Create Instance
+Handling Errors
+Cancellation
+Interceptors
+
+* pagekit / vue-resource : 과거, Vue.js에서 공식적으로 사용한 Http client 라이브러리. 현재는 공식 라이브러리가 아님.
+https://github.com/pagekit/vue-resource
+
+* HTTP 프로토콜
+https://joshua1988.github.io/web-development/http-part1/
