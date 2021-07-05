@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>emit</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ num}}</p>
+        <!-- <app-header v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메소드 이름"></app-header> -->
+        <app-header v-on:pass="logText"></app-header>
+        <app-content v-on:add="addNumber"></app-content>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>   
+    <script>
+
+        var appHeader = {
+            template : '<button v-on:click="passEvent">click me</button>',
+            methods : {
+                passEvent : function(){
+                    this.$emit('pass');
+                }
+            }
+        }
+
+        var appContent = {
+            template : '<button v-on:click="addNumber">add</button>',
+            
+            // method로 입력, Property or method "addNumber" is not defined on the instance but referenced during render.
+            methods : {
+                addNumber : function() {
+                        this.$emit('add');
+                }
+            }
+        }
+
+
+        var vm = new Vue({
+            el : '#app',
+            components : {
+                'app-header' : appHeader,
+                'app-content' : appContent 
+            },
+            methods : {
+                logText : function() { 
+                    console.log('hi');  // log 치고 tab클릭
+                },
+                addNumber : function() {
+                    console.log( this.num++ );
+                    // 실제 num의 선언은 data속서으이 내부에 있지만, Vue의 내부동작에 의해서 밖으로 나와 있음.
+                    // console.log(vm)로 Vue객체를 찍어보면암. 
+                }
+            },
+            data : {
+                num : 10
+            }
+        })
+    </script>
+</body>
+</html>
