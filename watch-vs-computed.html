@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{ num }}
+    {{ doubleNum }}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10
+      },
+      // 연산
+      computed: {
+        doubleNum: function() {
+          return this.num * 2;
+        }
+      },
+      // 데이터 요청
+      watch: {
+        num: function(newValue, oldValue) { // watch는  값의 변화를 추적하고 있기때문에 새로운값과 이전값을 인자로 받음,
+          this.fetchUserByNumber(newValue);
+        }
+        
+      },
+      methods: {
+        fetchUserByNumber: function(num) {
+          console.log(num);
+          //axios.get(num);
+        }
+      }
+    });
+
+    // https://vuejs.org/v2/guide/computed.html#ad
+  </script>
+</body>
+</html>

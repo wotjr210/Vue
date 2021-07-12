@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 디렉티브는 뷰 인스턴스의 data 혹은 computed속성을 뒤짐. -->
+        <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
+        <!-- <p id="abcd1234">{{ num }}</p> -->
+        <p>{{ doubleNum }}</p>
+        
+        <!-- dom에서 아예 제거되고 -->
+        <div v-if="loading">
+            Loading....
+        </div>
+        <div v-else>
+            test user has been logged  in
+        </div>
+        <!-- css style로 display none으로 처리됨/  -->
+        <div v-show="loading">Loading....</div>
+
+        <input v-model="message" type="text" name="" id="">
+        <p>{{ message }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                num : 10,
+                uuid : 'abcd1234',
+                name : 'text-blue',
+                loading : true,
+                message : ''
+            },
+            // 데이터의 값에 따라 바뀌는 값을 정의할때, computed속성을 이용.
+            computed : {
+                doubleNum : function() { return this.num*2; }
+            }
+            
+        })
+    </script>
+</body>
+</html>
